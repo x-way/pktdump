@@ -1,0 +1,34 @@
+version: 2
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-latest
+      - build-1.12
+  scheduled:
+    triggers:
+      - schedule:
+          cron: "1 2 * * 5"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - build-latest
+      - build-1.12
+
+jobs:
+  build-latest: &build-template
+    docker:
+      - image: circleci/golang:latest
+
+    steps:
+      - checkout
+      - run: go version
+      - run: go vet ./...
+      - run: go test -v ./...
+
+  build-1.12:
+    <<: *build-template
+    docker:
+      - image: circleci/golang:1.12
