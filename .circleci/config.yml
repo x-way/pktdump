@@ -26,11 +26,29 @@ jobs:
       PATH: /tmp/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
     steps:
-      - run: sudo apt-get update
-      - run: sudo apt-get install -y libusb-1.0-0-dev libdbus-glib-1-dev libbluetooth-dev libnl-genl-3-dev libibverbs-dev libssl-dev libssl0.9.8 libssl1.0.0 libdnet-dev libsmi2-dev libcap-ng-dev libpcap-dev
-      - run: cd .. && git clone --depth 3 --branch=master --quiet git://github.com/the-tcpdump-group/tcpdump.git && cd tcpdump && ./configure --prefix=/tmp && make && sudo make install
-      - checkout
+      - run: uname -a
       - run: go version
+      - run: sudo apt-get update
+      - run: |
+              sudo apt-get install -y libusb-1.0-0-dev
+              sudo apt-get install -y libdbus-glib-1-dev
+              sudo apt-get install -y libbluetooth-dev
+              sudo apt-get install -y libnl-genl-3-dev
+              sudo apt-get install -y libibverbs-dev
+              sudo apt-get install -y libssl-dev
+              sudo apt-get install -y libssl1.0.0
+              sudo apt-get install -y libdnet-dev
+              sudo apt-get install -y libsmi2-dev
+              sudo apt-get install -y libcap-ng-dev
+              sudo apt-get install -y libpcap-dev
+      - run: |
+              cd ..
+              git clone --depth 3 --branch=master --quiet git://github.com/the-tcpdump-group/tcpdump.git
+              cd tcpdump
+              ./configure --prefix=/tmp
+              make
+              sudo make install
+      - checkout
       - run: go vet ./...
       - run: go test -v ./...
 
