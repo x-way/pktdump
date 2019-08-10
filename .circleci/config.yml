@@ -22,10 +22,8 @@ jobs:
     docker:
       - image: circleci/golang:latest
 
-    environment:
-      PATH: /tmp/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-
     steps:
+      - checkout
       - run: uname -a
       - run: go version
       - run: sudo apt-get update
@@ -48,9 +46,8 @@ jobs:
               ./configure --prefix=/tmp
               make
               sudo make install
-      - checkout
       - run: go vet ./...
-      - run: go test -v ./...
+      - run: PATH=/tmp/sbin:$PATH go test -v ./...
 
   build-1.12:
     <<: *build-template
