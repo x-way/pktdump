@@ -25,6 +25,8 @@ jobs:
     steps:
       - checkout
       - run: go version
+      - run: apt-get update
+      - run: apt-get install -y tcpdump
       - run: go vet ./...
       - run: go test -v ./...
 
