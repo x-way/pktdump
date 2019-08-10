@@ -52,6 +52,11 @@ jobs:
                     sudo make install
       - run: go vet ./...
       - run: PATH=/tmp/sbin:$PATH go test -v ./...
+      - run:
+          name: codecov
+          command: |
+                    PATH=/tmp/sbin:$PATH go test -race -coverprofile=coverage.txt -covermode=atomic
+                    bash <(curl -s https://codecov.io/bash)
 
   build-1.12:
     <<: *build-template
