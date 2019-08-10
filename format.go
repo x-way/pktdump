@@ -9,7 +9,7 @@ import (
 )
 
 func formatPacketTCP(tcp *layers.TCP, src, dst string, length int) string {
-	length -= int(tcp.DataOffset)*4
+	length -= int(tcp.DataOffset) * 4
 	flags := ""
 	if tcp.FIN {
 		flags += "F"
@@ -111,16 +111,13 @@ func formatPacketICMPv6(packet *gopacket.Packet, icmp *layers.ICMPv6, src, dst s
 			echo, _ := echoLayer.(*layers.ICMPv6Echo)
 			return fmt.Sprintf("%s > %s: ICMP6, echo request, id %d, seq %d, length %d", src, dst, echo.Identifier, echo.SeqNumber, length)
 		}
-		return fmt.Sprintf("%s > %s: ICMP6, echo request, length %d", src, dst, length)
 	case layers.ICMPv6TypeEchoReply:
 		if echoLayer := (*packet).Layer(layers.LayerTypeICMPv6Echo); echoLayer != nil {
 			echo, _ := echoLayer.(*layers.ICMPv6Echo)
 			return fmt.Sprintf("%s > %s: ICMP6, echo reply, id %d, seq %d, length %d", src, dst, echo.Identifier, echo.SeqNumber, length)
 		}
-		return fmt.Sprintf("%s > %s: ICMP6, echo reply, length %d", src, dst, length)
-	default:
-		return fmt.Sprintf("%s > %s: ICMP6, length %d", src, dst, length)
 	}
+	return fmt.Sprintf("%s > %s: ICMP6, length %d", src, dst, length)
 }
 
 func formatPacketICMPv4(icmp *layers.ICMPv4, src, dst string, length int) string {

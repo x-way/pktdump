@@ -1,4 +1,7 @@
 # pktdump
+[![CircleCI](https://circleci.com/gh/x-way/pktdump/tree/master.svg?style=svg)](https://circleci.com/gh/x-way/pktdump/tree/master)
+[![Go Report Card](https://goreportcard.com/badge/github.com/x-way/pktdump)](https://goreportcard.com/report/github.com/x-way/pktdump)
+[![Codecov](https://codecov.io/gh/x-way/pktdump/branch/master/graph/badge.svg)](https://codecov.io/gh/x-way/pktdump/)
 
 Format gopacket.Packet network packets similar to the tcpdump CLI output
 
