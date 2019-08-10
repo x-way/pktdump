@@ -26,26 +26,30 @@ jobs:
       - checkout
       - run: uname -a
       - run: go version
-      - run: sudo apt-get update
-      - run: |
-              sudo apt-get install -y libusb-1.0-0-dev
-              sudo apt-get install -y libdbus-glib-1-dev
-              sudo apt-get install -y libbluetooth-dev
-              sudo apt-get install -y libnl-genl-3-dev
-              sudo apt-get install -y libibverbs-dev
-              sudo apt-get install -y libssl-dev
-              sudo apt-get install -y libssl1.1
-              sudo apt-get install -y libdnet-dev
-              sudo apt-get install -y libsmi2-dev
-              sudo apt-get install -y libcap-ng-dev
-              sudo apt-get install -y libpcap-dev
-      - run: |
-              cd ..
-              git clone --depth 3 --branch=master --quiet git://github.com/the-tcpdump-group/tcpdump.git
-              cd tcpdump
-              ./configure --prefix=/tmp
-              make
-              sudo make install
+      - run:
+          name: Install tcpdump build dependencies
+          command: |
+                    sudo apt-get update
+                    sudo apt-get install -y libusb-1.0-0-dev
+                    sudo apt-get install -y libdbus-glib-1-dev
+                    sudo apt-get install -y libbluetooth-dev
+                    sudo apt-get install -y libnl-genl-3-dev
+                    sudo apt-get install -y libibverbs-dev
+                    sudo apt-get install -y libssl-dev
+                    sudo apt-get install -y libssl1.1
+                    sudo apt-get install -y libdnet-dev
+                    sudo apt-get install -y libsmi2-dev
+                    sudo apt-get install -y libcap-ng-dev
+                    sudo apt-get install -y libpcap-dev
+      - run:
+          name: Build latest tcpdump
+          command: |
+                    cd ..
+                    git clone --depth 3 --branch=master --quiet git://github.com/the-tcpdump-group/tcpdump.git
+                    cd tcpdump
+                    ./configure --prefix=/tmp
+                    make
+                    sudo make install
       - run: go vet ./...
       - run: PATH=/tmp/sbin:$PATH go test -v ./...
 
