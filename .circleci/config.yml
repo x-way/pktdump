@@ -23,7 +23,7 @@ jobs:
       - image: circleci/golang:latest
 
     environment:
-      - PATH=/tmp/sbin:$PATH
+      PATH: /tmp/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
     steps:
       - run: sudo apt-get update
