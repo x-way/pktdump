@@ -34,7 +34,7 @@ jobs:
               sudo apt-get install -y libnl-genl-3-dev
               sudo apt-get install -y libibverbs-dev
               sudo apt-get install -y libssl-dev
-              sudo apt-get install -y libssl1.0.0
+              sudo apt-get install -y libssl1.1
               sudo apt-get install -y libdnet-dev
               sudo apt-get install -y libsmi2-dev
               sudo apt-get install -y libcap-ng-dev
