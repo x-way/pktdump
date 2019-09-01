@@ -1,5 +1,6 @@
 # pktdump
 [![CircleCI](https://circleci.com/gh/x-way/pktdump/tree/master.svg?style=svg)](https://circleci.com/gh/x-way/pktdump/tree/master)
+[![GoDoc](https://godoc.org/github.com/x-way/pktdump?status.svg)](https://godoc.org/github.com/x-way/pktdump)
 [![Go Report Card](https://goreportcard.com/badge/github.com/x-way/pktdump)](https://goreportcard.com/report/github.com/x-way/pktdump)
 [![Codecov](https://codecov.io/gh/x-way/pktdump/branch/master/graph/badge.svg)](https://codecov.io/gh/x-way/pktdump/)
 
