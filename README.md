@@ -3,6 +3,7 @@
 [![GoDoc](https://godoc.org/github.com/x-way/pktdump?status.svg)](https://godoc.org/github.com/x-way/pktdump)
 [![Go Report Card](https://goreportcard.com/badge/github.com/x-way/pktdump)](https://goreportcard.com/report/github.com/x-way/pktdump)
 [![Codecov](https://codecov.io/gh/x-way/pktdump/branch/master/graph/badge.svg)](https://codecov.io/gh/x-way/pktdump/)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fx-way%2Fpktdump.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fx-way%2Fpktdump?ref=badge_shield)
 
 Format gopacket.Packet network packets similar to the tcpdump CLI output
 
@@ -32,3 +33,7 @@ This would produce the following result
 ```
 IP 192.168.72.50.64362 > 192.168.72.1.53: 10628+ [1au] A CH? sigint.ch. (38)
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fx-way%2Fpktdump.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fx-way%2Fpktdump?ref=badge_large)
