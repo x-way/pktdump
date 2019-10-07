@@ -245,6 +245,8 @@ func formatPacketDNS(dns *layers.DNS, src, dst string, srcPort, dstPort, length 
 					}
 				case layers.DNSTypeSRV:
 					dnsStr = fmt.Sprintf("%s %s.:%d %d %d", dnsStr, string(r.SRV.Name), r.SRV.Port, r.SRV.Priority, r.SRV.Weight)
+				case layers.DNSTypeURI:
+					dnsStr = fmt.Sprintf("%s %d %d %s", dnsStr, r.URI.Priority, r.URI.Weight, string(r.URI.Target))
 				case layers.DNSTypeSOA:
 					// nothing
 				default:
