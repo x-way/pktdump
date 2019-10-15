@@ -192,16 +192,14 @@ func formatPacketDNS(dns *layers.DNS, src, dst string, srcPort, dstPort, length 
 			dnsStr += " NotAuth"
 		case layers.DNSResponseCodeNotZone:
 			dnsStr += " NotZone"
-		case 11:
-			dnsStr += " Resp11"
-		case 12:
-			dnsStr += " Resp12"
-		case 13:
-			dnsStr += " Resp13"
-		case 14:
-			dnsStr += " Resp14"
 		case 15:
 			dnsStr += " NoChange"
+		case 16:
+			dnsStr += " BadVers"
+		case 23:
+			dnsStr += " BadCookie"
+		default:
+			dnsStr += fmt.Sprintf(" Resp%d", dns.ResponseCode)
 		}
 		if dns.AA {
 			dnsStr += "*"
@@ -225,7 +223,7 @@ func formatPacketDNS(dns *layers.DNS, src, dst string, srcPort, dstPort, length 
 				if i > 0 {
 					dnsStr += ","
 				}
-				if r.Class != layers.DNSClassIN && r.Type != 41 {
+				if r.Class != layers.DNSClassIN && r.Type != layers.DNSTypeOPT {
 					dnsStr += " " + r.Class.String()
 				}
 				dnsStr += " " + r.Type.String()
