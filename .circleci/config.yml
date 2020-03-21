@@ -30,6 +30,7 @@ jobs:
       - checkout
       - run: uname -a
       - run: go version
+      - run: go env
       - run:
           name: Install tcpdump build dependencies
           command: |
@@ -54,7 +55,23 @@ jobs:
                     ./configure --prefix=/tmp
                     make
                     sudo make install
-      - run: go vet ./...
+      - run: go vet -v ./...
+      - run:
+          name: golint
+          command: |
+                    go get -u golang.org/x/lint/golint
+                    golint -set_exit_status ./...
+      - run:
+          name: staticcheck.io
+          command: |
+                    go get honnef.co/go/tools/cmd/staticcheck
+                    staticcheck -checks all ./...
+      - run:
+          name: Check gofumports formatting
+          command: |
+                    go get mvdan.cc/gofumpt/gofumports
+                    gofumports -d .
+                    [ -z "$(gofumports -l .)" ]
       - run:
           name: Run go tests
           environment:
