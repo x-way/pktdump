@@ -1,3 +1,4 @@
+// Package pktdump formats gopacket.Packet network packets similar to the tcpdump CLI output
 package pktdump
 
 import (
