@@ -44,7 +44,7 @@ jobs:
           name: Build latest tcpdump
           command: |
                     cd ..
-                    git clone --depth 3 --branch=master --quiet git://github.com/the-tcpdump-group/tcpdump.git
+                    git clone --depth 3 --branch=master --quiet https://github.com/the-tcpdump-group/tcpdump.git
                     cd tcpdump
                     ./configure --prefix=/tmp
                     make
