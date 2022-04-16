@@ -19,13 +19,13 @@ func main() {
 	for _, file := range os.Args[1:] {
 		f, err := os.Open(file)
 		if err != nil {
-			log.Fatal(fmt.Sprintf("Could not open pcap file '%s': %v\n", file, err))
+			log.Fatalf("Could not open pcap file '%s': %v\n", file, err)
 		}
 		defer f.Close()
 
 		handle, err := pcapgo.NewReader(f)
 		if err != nil {
-			log.Fatal(fmt.Sprintf("Could not create pcap reader: %v\n", err))
+			log.Fatalf("Could not create pcap reader: %v\n", err)
 		}
 
 		pkgsrc := gopacket.NewPacketSource(handle, handle.LinkType())
