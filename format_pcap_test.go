@@ -1,7 +1,6 @@
 package pktdump_test
 
 import (
-	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
@@ -38,7 +37,7 @@ func getFormatOutput(filename string) string {
 }
 
 func TestFormatPCAP(t *testing.T) {
-	files, err := ioutil.ReadDir("test")
+	files, err := os.ReadDir("test")
 	if err != nil {
 		log.Fatal(err)
 	}
