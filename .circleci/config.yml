@@ -45,6 +45,7 @@ jobs:
                     cd ..
                     git clone --depth 3 --branch=master --quiet https://github.com/the-tcpdump-group/tcpdump.git
                     cd tcpdump
+                    ./autogen.sh
                     ./configure --prefix=/tmp
                     make
                     sudo make install
