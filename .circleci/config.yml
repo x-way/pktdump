@@ -51,11 +51,6 @@ jobs:
                     sudo make install
       - run: go vet -v ./...
       - run:
-          name: golint
-          command: |
-                    go install golang.org/x/lint/golint@latest
-                    golint -set_exit_status ./...
-      - run:
           name: staticcheck.io
           command: |
                     go install honnef.co/go/tools/cmd/staticcheck@latest
