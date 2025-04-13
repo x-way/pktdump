@@ -1,6 +1,6 @@
 module github.com/x-way/pktdump
 
-go 1.23.0
+go 1.23.8
 
 require github.com/google/gopacket v1.1.19
 
