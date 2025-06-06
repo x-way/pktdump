@@ -3,7 +3,7 @@
 github.com/google/gopacket
 github.com/google/gopacket/layers
 github.com/google/gopacket/pcapgo
-# golang.org/x/net v0.40.0
+# golang.org/x/net v0.41.0
 ## explicit; go 1.23.0
 golang.org/x/net/bpf
 # golang.org/x/sys v0.33.0
