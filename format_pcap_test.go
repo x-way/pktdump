@@ -23,7 +23,7 @@ func getTcpdumpOutput(filename string) string {
 
 func getFormatOutput(filename string) string {
 	f, _ := os.Open(filename)
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 	handle, err := pcapgo.NewReader(f)
 	if err != nil {
 		log.Fatal(err)

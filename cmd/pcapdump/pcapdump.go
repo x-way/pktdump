@@ -21,7 +21,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("Could not open pcap file '%s': %v\n", file, err)
 		}
-		defer f.Close()
+		defer func() { _ = f.Close() }()
 
 		handle, err := pcapgo.NewReader(f)
 		if err != nil {
@@ -31,7 +31,7 @@ func main() {
 		pkgsrc := gopacket.NewPacketSource(handle, handle.LinkType())
 
 		for packet := range pkgsrc.Packets() {
-			fmt.Printf("%s ", packet.Metadata().CaptureInfo.Timestamp.Format("15:04:05.000000"))
+			fmt.Printf("%s ", packet.Metadata().Timestamp.Format("15:04:05.000000"))
 			fmt.Println(pktdump.Format(packet))
 		}
 	}
