@@ -17,9 +17,9 @@ func main() {
 	}
 
 	for _, file := range os.Args[1:] {
-		f, err := os.Open(file)
+		f, err := os.Open(file) // #nosec G304 G703 -- file is a positional CLI argument (pcap file to read), not attacker-controlled
 		if err != nil {
-			log.Fatalf("Could not open pcap file '%s': %v\n", file, err)
+			log.Fatalf("Could not open pcap file '%s': %v\n", file, err) // #nosec G706 -- file is a positional CLI argument, not attacker-controlled
 		}
 		defer func() { _ = f.Close() }()
 
